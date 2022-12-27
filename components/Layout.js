@@ -27,7 +27,7 @@ export default function Layout({ title, children }) {
                     {children}
                 </main>
                 <footer className='flex h-10 justify-center items-center shadow-inner'>
-                    teste
+                    Copyright @ 2022 - Gustavo Pes
                 </footer>
             </div>
         </>
