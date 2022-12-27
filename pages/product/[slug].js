@@ -40,8 +40,8 @@ export default function ProductScreen() {
                     <Image
                         src={product.image}
                         alt={product.name}
-                        width={400}
-                        height={400}
+                        width={100}
+                        height={100}
                         layout="responsive">
                     </Image>
                 </div>

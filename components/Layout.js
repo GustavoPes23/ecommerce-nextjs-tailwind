@@ -1,3 +1,4 @@
+import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useContext } from 'react'
@@ -19,24 +20,27 @@ export default function Layout({ title, children }) {
                 <header>
                     <nav className='flex h-12 items-center px-4 justify-between shadow-md'>
                         <Link href="/">
-                            <span className='text-lg font-bold'>SheepTown</span>
+                            <span className='text-lg font-bold color-gray'>SheepTown</span>
                         </Link>
-                        <div>
-                            <Link href="/cart"><span className='p-2'>Carrinho
+                        <div className="flex items-center jutify-between">
+                            <Link href="/cart">
+                                <span className='p-2 flex items-center jutify-between color-gray'>
+                                <ShoppingBagIcon className="w-5 m-3"/>
                                 {cart.cartItems.length > 0 && (
-                                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                                    <span className="rounded-full bg-blue-600 px-1 py-0.3 text-xs font-bold text-white -ml-5 -mt-4">
                                         {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                                     </span>
                                 )}
-                            </span></Link>
-                            <Link href="/login"><span className='p-2'>Login</span></Link>
+                            </span>
+                            </Link>
+                            <Link href="/login"><span className='p-2 color-gray'>Login</span></Link>
                         </div>
                     </nav>
                 </header>
                 <main className='container m-auto mt-4 px-4'>
                     {children}
                 </main>
-                <footer className='flex h-10 justify-center items-center shadow-inner'>
+                <footer className='flex h-10 justify-center items-center shadow-inner color-gray'>
                     Copyright @ 2022 - Gustavo Pes
                 </footer>
             </div>

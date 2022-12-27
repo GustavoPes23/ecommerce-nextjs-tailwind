@@ -14,8 +14,13 @@ export default function CartScreen() {
     } = state;
 
     const removeItemHandler = (item) => {
-        dispatch({ type: 'CART_REMOVE_ITEM', payload:item })
+        dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
     }
+
+    const updateCartHandler = (item, quantityString) => {
+        const quantity = Number(quantityString);
+        dispatch({ type: 'CART_ADD_ITEM', payload:{...item, quantity} });
+    };
 
     return (
         <Layout title="Carrinho">
@@ -42,7 +47,7 @@ export default function CartScreen() {
                                             <tr key={item.slug} className='border-b'>
                                                 <td>
                                                     <Link href={`/product/${item.slug}`}>
-                                                        <span className='flex items-center'>
+                                                        <span className='flex items-center font-bold'>
                                                             <Image
                                                                 src={item.image}
                                                                 alt={item.name}
@@ -55,13 +60,19 @@ export default function CartScreen() {
                                                     </Link>
                                                 </td>
                                                 <td className='p-5 text-right'>
-                                                    {item.quantity}
+                                                    <select value={item.quantity} onChange={(e) => updateCartHandler(item, e.target.value)}>
+                                                    {
+                                                        [...Array(item.countInStock).keys()].map(x => (
+                                                            <option key={x+1} value={x+1}>{x+1}</option>
+                                                        ))
+                                                    }
+                                                    </select>
                                                 </td>
                                                 <td className='p-5 text-right'>
                                                     ${item.price}
                                                 </td>
                                                 <td className='p-5 text-center'>
-                                                    <button onClick={() => removeItemHandler(item)}>
+                                                    <button onClick={() => removeItemHandler(item)} title="Remover item">
                                                         <XCircleIcon className="h-5 w-5"></XCircleIcon>
                                                     </button>
                                                 </td>
@@ -70,14 +81,15 @@ export default function CartScreen() {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className='card p-5'>
+                            <div className='card p-5 ml-6 mt-3'>
                                 <ul>
                                     <li>
                                         <div className='pb-3 text-xl'>
-                                            Total ( {cartItems.reduce((a, c) => a + c.quantity, 0)} )
+                                            Quantidade: {cartItems.reduce((a, c) => a + c.quantity, 0)}
                                             {' '}
-                                            : $
-                                            { cartItems.reduce((a, c) => a + c.quantity * c.price, 0) }
+                                        </div>
+                                        <div className='pb-3 text-xl'>
+                                        Total: R$ { cartItems.reduce((a, c) => a + c.quantity * c.price, 0) }
                                         </div>
                                     </li>
                                     <li>
