@@ -1,12 +1,16 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import Head from 'next/head'
 import Link from 'next/link'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Store } from './../utils/Store';
 
 export default function Layout({ title, children }) {
     const { state, dispatch } = useContext(Store);
     const { cart } = state;
+    const [cartItemsCount, setCartItemsCount] = useState(0);
+    useEffect(() => {
+        setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0))
+    }, [cart.cartItems]);
 
     return (
         <>
@@ -26,9 +30,9 @@ export default function Layout({ title, children }) {
                             <Link href="/cart">
                                 <span className='p-2 flex items-center jutify-between color-gray'>
                                 <ShoppingBagIcon className="w-5 m-3"/>
-                                {cart.cartItems.length > 0 && (
+                                {cartItemsCount > 0 && (
                                     <span className="rounded-full bg-blue-600 px-1 py-0.3 text-xs font-bold text-white -ml-5 -mt-4">
-                                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                                        {cartItemsCount}
                                     </span>
                                 )}
                             </span>
