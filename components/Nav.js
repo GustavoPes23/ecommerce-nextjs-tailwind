@@ -3,8 +3,10 @@ import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react'
 import { Store } from './../utils/Store';
+import { useSession } from 'next-auth/react';
 
 export default function NavScreen() {
+    const { status, data: session } = useSession();
     const { state, dispatch } = useContext(Store);
     const { cart } = state;
     const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -28,7 +30,16 @@ export default function NavScreen() {
                         )}
                     </span>
                 </Link>
-                <Link href="/login"><span className='p-2 color-gray'><UserCircleIcon className='w-5' /></span></Link>
+                <Link href="/login">
+                    <div className='flex p-2 color-gray gap-1'>
+                        <UserCircleIcon className='w-5'/>
+                        Olá,
+                        {status === 'loading' 
+                        ? ('Loading')
+                        : session?.user ? (<span className='text-bold'>{session.user.name}</span>) : (<span className='text-bold'>visitante</span>)
+                        }                       
+                    </div>
+                </Link>
             </div>
         </nav>
     )
