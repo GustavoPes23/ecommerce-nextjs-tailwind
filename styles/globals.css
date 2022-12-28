@@ -41,6 +41,17 @@ a {
   color: #707070;
 }
 
-.color-gray:hover {
+.color-gray-second {
+  color: #3f3f40;
+}
+
+.color-gray:hover, 
+.color-gray-second:hover {
   color: black
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring
 }

@@ -1,4 +1,4 @@
-import { ShoppingBagIcon } from '@heroicons/react/24/solid';
+import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
@@ -37,7 +37,7 @@ export default function Layout({ title, children }) {
                                 )}
                             </span>
                             </Link>
-                            <Link href="/login"><span className='p-2 color-gray'>Login</span></Link>
+                            <Link href="/login"><span className='p-2 color-gray'><UserCircleIcon className='w-5'/></span></Link>
                         </div>
                     </nav>
                 </header>
