@@ -18,8 +18,10 @@ export default function ProductItem({ product }) {
                         {product.name}
                     </h2>
                 </Link>
-                <p className='mb-2'>{product.brand}</p>
-                <p>R${product.price}</p>
+                <div className='flex flex-col items-center justify-center divide-y'>
+                    <p className='mb-2'>{product.brand}</p>
+                    <p><span className='text-lime-500 font-bold'>R${product.price}</span><span> à vista</span></p>
+                </div>
             </div>
         </div>
     )

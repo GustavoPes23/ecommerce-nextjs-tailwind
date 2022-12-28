@@ -31,7 +31,7 @@ export default function Layout({ title, children }) {
                                 <span className='p-2 flex items-center jutify-between color-gray'>
                                 <ShoppingBagIcon className="w-5 m-3"/>
                                 {cartItemsCount > 0 && (
-                                    <span className="rounded-full bg-blue-600 px-1 py-0.3 text-xs font-bold text-white -ml-5 -mt-4">
+                                    <span className="rounded-full bg-sky-500 px-1 py-0.3 text-xs font-bold text-white -ml-5 -mt-4">
                                         {cartItemsCount}
                                     </span>
                                 )}

@@ -11,7 +11,7 @@ export default function LoginScreen() {
     } = useForm();
 
     const submitHandler = ({ email, password }) => {
-        
+
     };
 
     return (
@@ -43,7 +43,7 @@ export default function LoginScreen() {
                     }
                 </div>
                 <div className='mb-4'>
-                    <button className='primary-button'>Acessar</button>
+                    <button className='primary-button text-bold'>ACESSAR</button>
                 </div>
                 <div className='mb-4'>
                     Não tem uma conta? 

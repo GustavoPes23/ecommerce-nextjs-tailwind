@@ -33,40 +33,39 @@ export default function ProductScreen() {
     return (
         <Layout title={product.name}>
             <div className='py-2'>
-                <Link href="/">Página inicial</Link>
+                <Link href="/" className="underline underline-offset-1">página inicial</Link>
+                <span> {'>'} produto</span>
             </div>
-            <div className='gird md:grid-cols-4 md:gap-3'>
+            <div className='grid md:grid-cols-4'>
                 <div className='md:col-span-2'>
-                    <Image
+                    <img
                         src={product.image}
                         alt={product.name}
-                        width={100}
-                        height={100}
-                        layout="responsive">
-                    </Image>
+                        width={640}
+                        height={640}
+                        layout="responsive" 
+                        className='rounded-lg shadow-md'>
+                    </img>
                 </div>
-                <div>
+                <div className='md:ml-5'>
                     <ul>
                         <li>
-                            <h1 className='text-lg'>{product.name}</h1>
+                            <h1 className='text-lg font-bold'>{product.name}</h1>
                         </li>
                         <li>Categoria: {product.category}</li>
                         <li>Marca: {product.brand}</li>
-                        <li>{product.rating} de {product.numReviews} reviews</li>
+                        <li>{product.rating} de {product.numReviews} avaliações</li>
                         <li>Descrição: {product.description}</li>
                     </ul>
-                </div>
-                <div>
-                    <div className='card p-5'>
+                    <div className='card p-5 mt-4 divide-y'>
                         <div className="mb-2 flex justify-between">
                             <div>Preço</div>
-                            <div>${product.price}</div>
+                            <div className='text-lime-500 font-bold'>R${product.price}</div>
                         </div>
                         <div className="mb-2 flex justify-between">
-                            <div>Status</div>
-                            <div>{product.countInStock > 0 ? 'Em estoque' : 'Esgotado'}</div>
+                            <div class="text-right">{product.countInStock > 0 ? 'Em estoque' : 'Esgotado'}</div>
                         </div>
-                        <button className='primary-button w-full' onClick={addToCartHandler}>Adicionar ao carrinho</button>
+                        <button className='primary-button w-full' onClick={addToCartHandler}>COMPRAR</button>
                     </div>
                 </div>
             </div>
