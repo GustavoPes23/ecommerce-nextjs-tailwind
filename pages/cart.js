@@ -31,7 +31,7 @@ function CartScreen() {
                 cartItems.length === 0
                     ? (<div className="mt-4 font-bold grid">
                         Ops... parece que seu carrinho está vázio.
-                        <button className='primary-button w-64 mt-4'><Link href="/">ESCOLHER PRODUTO</Link></button>
+                        <Link href="/"><button className='primary-button w-64 mt-4'>ESCOLHER PRODUTO</button></Link>
                     </div>)
                     : (
                         <div className='grid md:grid-cols-4 md-gap-5'>
@@ -73,7 +73,7 @@ function CartScreen() {
                                                     </select>
                                                 </td>
                                                 <td className='p-5 text-right'>
-                                                    <span class="text-lime-500 font-bold">R${item.price}</span>
+                                                    <span className="text-lime-500 font-bold">R${item.price}</span>
                                                 </td>
                                                 <td className='p-5 text-center'>
                                                     <button onClick={() => removeItemHandler(item)} title="Remover item">
@@ -93,7 +93,7 @@ function CartScreen() {
                                             {' '}
                                         </div>
                                         <div className='pb-3 text-xl'>
-                                            Total: <span class="text-lime-500 font-bold">R$ {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}</span>
+                                            Total: <span className="text-lime-500 font-bold">R$ {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}</span>
                                         </div>
                                     </li>
                                     <li>

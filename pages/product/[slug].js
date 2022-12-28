@@ -36,7 +36,7 @@ export default function ProductScreen() {
                 <Link href="/" className="underline underline-offset-1">página inicial</Link>
                 <span> {'>'} produto</span>
             </div>
-            <div className='grid md:grid-cols-4'>
+            <div className='grid md:grid-cols-3'>
                 <div className='md:col-span-2'>
                     <img
                         src={product.image}
@@ -63,7 +63,7 @@ export default function ProductScreen() {
                             <div className='text-lime-500 font-bold'>R${product.price}</div>
                         </div>
                         <div className="mb-2 flex justify-between">
-                            <div class="text-right">{product.countInStock > 0 ? 'Em estoque' : 'Esgotado'}</div>
+                            <div className="text-right">{product.countInStock > 0 ? 'Em estoque' : 'Esgotado'}</div>
                         </div>
                         <button className='primary-button w-full' onClick={addToCartHandler}>COMPRAR</button>
                     </div>

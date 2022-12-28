@@ -4,12 +4,13 @@ import React from 'react'
 
 export default function ProductItem({ product }) {
     return (
-        <div className='card rounded-xl'>
+        <div className='card rounded-xl w-64 h-96'>
             <Link href={`/product/${product.slug}`}>
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="rounded shadow"
+                    
+                    className="rounded shadow h-64 w-96"
                 />
             </Link>
             <div className='flex flex-col items-center justify-center p-5 color-gray-second'>
