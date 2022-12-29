@@ -18,8 +18,8 @@ function reducer(state, action) {
       state;
   }
 }
+
 function OrderScreen() {
-  // order/:id
   const { query } = useRouter();
   const orderId = query.id;
 
@@ -28,6 +28,7 @@ function OrderScreen() {
     order: {},
     error: '',
   });
+
   useEffect(() => {
     const fetchOrder = async () => {
       try {
@@ -42,6 +43,7 @@ function OrderScreen() {
       fetchOrder();
     }
   }, [order, orderId]);
+  
   const {
     shippingAddress,
     paymentMethod,
@@ -56,8 +58,8 @@ function OrderScreen() {
   } = order;
 
   return (
-    <Layout title={`Order ${orderId}`}>
-      <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
+    <Layout title={`Pedido ${orderId}`}>
+      <h1 className="mb-4 text-xl">{`Pedido ${orderId}`}</h1>
       {loading ? (
         <div>Carregando...</div>
       ) : error ? (
