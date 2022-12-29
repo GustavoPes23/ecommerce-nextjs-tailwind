@@ -29,7 +29,7 @@ function CartScreen() {
         if(data.countInStock < quantity) return toast.error('Desculpe, produto está esgotado');
 
         dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
-        toast.success('Produto adicionado no carrinho');
+        toast.success('Produto adicionado ao carrinho');
     };
 
     return (
