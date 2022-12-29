@@ -41,7 +41,6 @@ export default function NavScreen() {
                     </span>
                 </Link>
 
-
                 <Menu as="div" className="relative inline-block">
                     <div className='flex justify-between p-2 color-gray gap-1'>
                         <Menu.Button className="flex gap-1 items-center">
