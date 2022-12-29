@@ -25,7 +25,7 @@ function CartScreen() {
 
     return (
         <Layout title="Carrinho">
-        <Link href="/" className="underline underline-offset-1">página inicial</Link>
+        <Link href="/" className="underline underline-offset-1 pl-4">página inicial</Link>
             <span className="mb-4 text-gray"> {'>'} carrinho</span>
             {
                 cartItems.length === 0
@@ -34,7 +34,7 @@ function CartScreen() {
                         <Link href="/"><button className='primary-button w-64 mt-4'>ESCOLHER PRODUTO</button></Link>
                     </div>)
                     : (
-                        <div className='grid md:grid-cols-4 md-gap-5'>
+                        <div className='grid md:grid-cols-4 md-gap-5 px-4'>
                             <div className='overflow-x-auto md:col-span-3'>
                                 <table className='min-w-full'>
                                     <thead className='border-b'>
@@ -85,7 +85,7 @@ function CartScreen() {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className='card p-5 ml-6 mt-3'>
+                            <div className='card p-5 lg:ml-6 mt-3'>
                                 <ul>
                                     <li>
                                         <div className='pb-3 text-xl'>

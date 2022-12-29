@@ -25,7 +25,7 @@ export default function NavScreen() {
     }
 
     return (
-        <nav className='flex h-12 items-center md:px-4 md:justify-between lg:justify-center lg:px-0 shadow-md'>
+        <nav className='flex h-12 items-center px-4 justify-between lg:justify-center lg:px-0 shadow-md'>
             <Link href="/" className='lg:mx-96 lg:px-16'>
                 <span className='text-lg font-bold color-gray'>SheepTown</span>
             </Link>
@@ -50,7 +50,7 @@ export default function NavScreen() {
                                 ? ('Loading')
                                 : session?.user
                                     ? (<span className='text-bold'>{session.user.name}</span>)
-                                    : (<Link href="/login"><span className='text-bold'>visitante</span></Link>)
+                                    : (<span className='text-bold'>visitante</span>)
                             }
                         </Menu.Button>
                         <Menu.Items className="absolute top-10 right-0 w-56 origin-top-right shadow-lg bg-white">

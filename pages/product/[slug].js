@@ -32,11 +32,11 @@ export default function ProductScreen() {
 
     return (
         <Layout title={product.name}>
-            <div className='py-2'>
+            <div className='py-2 px-4'>
                 <Link href="/" className="underline underline-offset-1">página inicial</Link>
                 <span> {'>'} produto</span>
             </div>
-            <div className='grid md:grid-cols-3'>
+            <div className='grid md:grid-cols-3 px-4'>
                 <div className='md:col-span-2'>
                     <img
                         src={product.image}
@@ -44,7 +44,7 @@ export default function ProductScreen() {
                         width={640}
                         height={640}
                         layout="responsive" 
-                        className='rounded-lg shadow-md'>
+                        className='rounded-lg shadow-md slug-product'>
                     </img>
                 </div>
                 <div className='md:ml-5'>
@@ -57,7 +57,7 @@ export default function ProductScreen() {
                         <li>{product.rating} de {product.numReviews} avaliações</li>
                         <li>Descrição: {product.description}</li>
                     </ul>
-                    <div className='card p-5 mt-4 divide-y'>
+                    <div className='card p-5 mt-4 divide-y slug-product'>
                         <div className="mb-2 flex justify-between">
                             <div>Preço</div>
                             <div className='text-lime-500 font-bold'>R${product.price}</div>

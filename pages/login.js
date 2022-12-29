@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import { useForm } from 'react-hook-form';
-import { Link } from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import { getError } from '../utils/error';
 import { toast } from 'react-toastify';
@@ -43,7 +42,7 @@ export default function LoginScreen() {
 
     return (
         <Layout title="Login">
-            <form className='mx-auto max-w-screen-md' onSubmit={handleSubmit((submitHandler))}>
+            <form className='mx-auto max-w-screen-md px-4' onSubmit={handleSubmit((submitHandler))}>
                 <h1 className='mb-4 text-xl'>Login</h1>
                 <div className='mb-4'>
                     <label htmlFor="email">Email</label>
@@ -74,7 +73,7 @@ export default function LoginScreen() {
                 </div>
                 <div className='mb-4'>
                     Não tem uma conta? 
-                   
+                   <button className="px-1">Criar Conta</button>
                 </div>
             </form>
         </Layout>

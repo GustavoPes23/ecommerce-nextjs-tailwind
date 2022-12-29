@@ -33,6 +33,25 @@ a {
   @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
 
+.product-item {
+  border-radius: 16px;
+}
+
+.product-item img {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.slug-product {
+  border-radius: 16px;
+}
+
+.product-item:hover {
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.25));
+}
+
 .primary-button {
   @apply rounded bg-lime-500 py-2 px-4 shadow outline-none hover:bg-lime-600 active:bg-lime-600 text-white
 }
