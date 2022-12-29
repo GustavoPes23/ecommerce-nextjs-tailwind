@@ -52,11 +52,11 @@ export default function ShippingScreen() {
     }
 
     return (
-        <Layout title="Confirmação de compra">
+        <Layout title="Endereço de entrega">
             <CheckoutWizard activeStep={1} />
             <form className="mx-auto max-w-screen-md"
                 onSubmit={handleSubmit(submitHandler)}>
-                <h1 className="mb-4 text-xl">Confirmação de compra</h1>
+                <h1 className="mb-4 text-xl">Endereço de entrega</h1>
                 <div className="mb-4">
                     <label htmlFor="fullName">Nome completo</label>
                     <input
