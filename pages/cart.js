@@ -6,6 +6,8 @@ import Layout from '../components/Layout';
 import { Store } from './../utils/Store';
 import dynamic from 'next/dynamic';
 import { TrashIcon } from '@heroicons/react/24/solid';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function CartScreen() {
     const router = useRouter();
@@ -15,12 +17,19 @@ function CartScreen() {
     } = state;
 
     const removeItemHandler = (item) => {
-        dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
+        dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+
+        toast.success('Produto removido do carrinho');
     }
 
-    const updateCartHandler = (item, quantityString) => {
+    const updateCartHandler = async (item, quantityString) => {
         const quantity = Number(quantityString);
+        const { data } = await axios.get(`/api/products/${item._id}`);
+
+        if(data.countInStock < quantity) return toast.error('Desculpe, produto está esgotado');
+
         dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+        toast.success('Produto adicionado no carrinho');
     };
 
     return (
