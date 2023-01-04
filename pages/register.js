@@ -5,6 +5,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { getError } from '../utils/error';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 export default function LoginScreen() {
     const { data: session } = useSession();
@@ -20,11 +21,18 @@ export default function LoginScreen() {
     const {
         handleSubmit,
         register,
+        getValues,
         formState: { errors },
     } = useForm();
 
-    const submitHandler = async ({ email, password }) => {
+    const submitHandler = async ({ name, email, password }) => {
         try {
+
+            await axios.post('/api/auth/signup', {
+                name,
+                email, 
+                password
+            });
 
             const result = await signIn('credentials', {
                 redirect: false,
@@ -41,9 +49,19 @@ export default function LoginScreen() {
     };
 
     return (
-        <Layout title="Login">
+        <Layout title="Criar conta">
             <form className='mx-auto max-w-screen-md px-4' onSubmit={handleSubmit((submitHandler))}>
-                <h1 className='mb-4 text-xl'>Login</h1>
+                <h1 className='mb-4 text-xl'>Criar conta</h1>
+                <div className='mb-4'>
+                    <label htmlFor="name">Nome</label>
+                    <input type="text" 
+                    {...register('name', {required: 'Por favor, digite seu nome'
+                    })}
+                    className='w-full' id="name" autoFocus />
+                    {errors.name && 
+                        (<div className='text-red-500'>{errors.name.message}</div>)
+                    }
+                </div>
                 <div className='mb-4'>
                     <label htmlFor="email">Email</label>
                     <input type="email" 
@@ -63,17 +81,32 @@ export default function LoginScreen() {
                         required: 'Por favor, insira uma senha',
                         minLength: { value: 6, message: 'Insira uma senha com mais de 5 caracteres'}
                     })}
-                    className='w-full' id="password" autoFocus />
+                    className='w-full' id="password" />
                     {errors.password && 
                         (<div className='text-red-500'>{errors.password.message}</div>)
                     }
                 </div>
                 <div className='mb-4'>
-                    <button className='primary-button text-bold'>ACESSAR</button>
+                    <label htmlFor="confirmPassword">Confirme a senha</label>
+                    <input type="password" 
+                    {...register('confirmPassword', {
+                        required: 'Por favor, confirme sua senha',
+                        validate: (value) => value === getValues('password'),
+                        minLength: { 
+                            value: 6, message: 'Insira uma senha com mais de 5 caracteres'
+                        }
+                    })}
+                    className='w-full' id="confirmPassword" />
+                    {errors.confirmPassword && 
+                        (<div className='text-red-500'>{errors.confirmPassword.message}</div>)
+                    }
+                    {errors.confirmPassword && 
+                        errors.confirmPassword.type === 'validate' &&
+                        (<div className='text-red-500'>As senhas estão diferentes</div>)
+                    }
                 </div>
                 <div className='mb-4'>
-                    Não tem uma conta? 
-                   <button className="px-1" onClick={ () => router.push(`/register?redirect=${redirect || '/'}`) }>Criar Conta</button>
+                    <button className='primary-button text-bold'>Criar Conta</button>
                 </div>
             </form>
         </Layout>
